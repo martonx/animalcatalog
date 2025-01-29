@@ -8,5 +8,32 @@
             Text="Welcome to List page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <ListView x:Name="AnimalList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1"
+                                Text="{Binding Type}"
+                                FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Species}"
+                                FontAttributes="Italic"
+                                VerticalOptions="End" />
+                            <Button x:Name="Details" Text="Details" Clicked="OnDetailsClicked"></Button>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
 </ContentPage>

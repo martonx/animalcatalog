@@ -8,5 +8,12 @@
             Text="Welcome to Details page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label
+            Text="{Binding CurrentAnimal.Description}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Image Source="{Binding CurrentAnimal.ImageUrl}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

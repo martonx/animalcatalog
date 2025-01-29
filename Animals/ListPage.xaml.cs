@@ -2,12 +2,14 @@ namespace Animals;
 
 public partial class ListPage : ContentPage
 {
-	public ListPage(IAnimalService animalService)
+    List<Animal> animals = new();
+
+    public ListPage(IAnimalService animalService)
 	{
 		InitializeComponent();
 
 		var currentRoute = Shell.Current.CurrentState.Location.ToString();
-		IEnumerable<Animal> animals;
+		
 
 		switch (currentRoute)
 		{
@@ -20,5 +22,23 @@ public partial class ListPage : ContentPage
             default:
 				break;
 		}
-	}
+
+		AnimalList.ItemsSource = animals;
+    }
+
+    private async void OnDetailsClicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var item = (Animal)button.BindingContext;
+        var id = item.Id;
+
+        var animal = animals.Single(a => a.Id == id);
+
+            var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "Animal", animal }
+            };
+
+        await Shell.Current.GoToAsync($"Details", navigationParameter);
+    }
 }

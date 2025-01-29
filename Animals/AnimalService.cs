@@ -18,11 +18,25 @@ public class AnimalService : IAnimalService
             ImageUrl = "https://www.zooplus.hu/magazin/wp-content/uploads/2017/03/siamkatze-1024x680.jpg",
             Description = "Ez egy sziámi macska leírás"
         },
+        new Animal {
+            Id = 3,
+            Type = AnimalType.Dog,
+            Species = "Német juhász",
+            ImageUrl = "https://dogx.hu/wp-content/uploads/2023/03/Nemet-juhaszkutya-fajtaleiras.jpg",
+            Description = "Ez egy német juhász leírás"
+        },
+        new Animal {
+            Id = 4,
+            Type = AnimalType.Dog,
+            Species = "Csivava",
+            ImageUrl = "https://kutyakaland.hu/wp-content/uploads/csivava2.jpg",
+            Description = "Ez egy csivava leírás"
+        },
     };
 
-    public IEnumerable<Animal> GetSpeciesForType(AnimalType type)
+    public List<Animal> GetSpeciesForType(AnimalType type)
     {
-        return animals.Where(a => a.Type == type);
+        return animals.Where(a => a.Type == type).ToList();
     }
 
     public Animal GetAnimalById(int id)

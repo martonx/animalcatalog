@@ -1,9 +1,22 @@
 namespace Animals;
 
+[QueryProperty(nameof(CurrentAnimal), "Animal")]
 public partial class DetailsPage : ContentPage
 {
-	public DetailsPage()
+    Animal animal;
+    public Animal CurrentAnimal
+    {
+        get => animal;
+        set
+        {
+            animal = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public DetailsPage()
 	{
 		InitializeComponent();
-	}
+        BindingContext = this;
+    }
 }
